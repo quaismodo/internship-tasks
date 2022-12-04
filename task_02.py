@@ -1,13 +1,12 @@
-def coincidence(elements=False, num_range=False):
+def coincidence(elements=None, num_range=None):
     result_list = list()
     if elements and num_range:
         num_list = list(num_range)
 
-        for el in elements:
-
-            if type(el) in [int, float]:
-                if num_list[0] <= el <= num_list[-1]:
-                    result_list.append(el)
+        for element in elements:
+            if isinstance(element, (int, float)):
+                if num_list[0] <= element <= num_list[-1]:
+                    result_list.append(element)
 
     return result_list
 

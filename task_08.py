@@ -2,15 +2,15 @@ from functools import reduce
 
 
 def multiply_numbers(inputs=None):
-    inputs_str = str(inputs)
-    result = None
-    if any(map(str.isdigit, inputs_str)):
-        num_list = map(int, filter(str.isdigit, inputs_str))
-        result = 1
-        for i in num_list:
-            result *= i
+    total = None
+    if inputs:
+        if any(map(str.isdigit, str(inputs))):
+            total = 1
+            num_list = map(int, filter(str.isdigit, str(inputs)))
+            for num in num_list:
+                total *= num
 
-    return result
+    return total
 
 
 print(multiply_numbers())
@@ -21,14 +21,14 @@ print(multiply_numbers(2.3))
 print(multiply_numbers([5, 6, 4]))
 
 
-# Второй вариант, с использованием фукнции reduce()
+# Второй вариант, с использованием функции reduce()
 def multiply_numbers(inputs=None):
-    def multiply(x, y):
-        return x * y
+    total = None
+    if inputs:
+        def multiply(x, y):
+            return x * y
 
-    inputs_str = str(inputs)
-    result = None
-    if any(map(str.isdigit, inputs_str)):
-        result = reduce(multiply, map(int, filter(str.isdigit, inputs_str)))
+        if any(map(str.isdigit, str(inputs))):
+            total = reduce(multiply, map(int, filter(str.isdigit, str(inputs))))
 
-    return result
+    return total

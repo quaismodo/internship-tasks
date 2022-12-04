@@ -1,17 +1,18 @@
-def sort_list(list):
-    if list:
-        min_num = min(list)
-        max_num = max(list)
-        for i in range(len(list)):
-            if list[i] == min_num:
-                list[i] = max_num
-            elif list[i] == max_num:
-                list[i] = min_num
-        list.append(min_num)
-    return list
+def sort_list(num_list):
+    if num_list:
+        min_num = min(num_list)
+        max_num = max(num_list)
+
+        for i in range(len(num_list)):
+            if num_list[i] == min_num:
+                num_list[i] = max_num
+            elif num_list[i] == max_num:
+                num_list[i] = min_num
+        num_list.append(min_num)
+    return num_list
 
 
 print(sort_list([]))
 print(sort_list([2, 4, 6, 8]))
 print(sort_list([1]))
-print(sort_list([1, 2, 1, 3]))
+print(sort_list([1, 2, 1]))

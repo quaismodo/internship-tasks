@@ -1,13 +1,12 @@
 def combine_anagrams(words_array):
-    list_now = [[''.join(sorted(i.lower())), i] for i in words_array]
-    dict_sort = {}
-    for i in range(len(list_now)):
-        if list_now[i][0] in dict_sort:
-            dict_sort[list_now[i][0]].append(list_now[i][1])
+    pair_list = [[''.join(sorted(word.lower())), word] for word in words_array]
+    anagrams_dict = {}
+    for pair_words in pair_list:
+        if pair_words[0] in anagrams_dict:
+            anagrams_dict[pair_words[0]].append(pair_words[1])
         else:
-            dict_sort[list_now[i][0]] = [list_now[i][1]]
-
-    return list(dict_sort.values())
+            anagrams_dict[pair_words[0]] = [pair_words[1]]
+    return list(anagrams_dict.values())
 
 
 print(combine_anagrams(["cars", "for", "potatoes", "racs", "four", "scar", "creams", "scream"]))

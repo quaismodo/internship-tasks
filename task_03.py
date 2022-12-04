@@ -1,8 +1,8 @@
 def max_odd(array):
     num_list = list()
-    for i in array:
-        if type(i) in [float, int] and i % 2 != 0:
-            num_list.append(int(i))
+    for num in array:
+        if isinstance(num, (int, float)) and num % 2 != 0:
+            num_list.append(int(num))
 
     return max(num_list) if num_list else None
 

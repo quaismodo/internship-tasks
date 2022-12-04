@@ -1,11 +1,12 @@
 def connect_dict(dict1, dict2):
-    min_dict = (lambda x, y: x
-                if sum(x.values()) <= sum(y.values())
-                else y)(dict1, dict2)
+    def get_min_dict(dict_x, dict_y):
+        return dict_x if sum(dict_x.values()) <= sum(dict_y.values()) else dict_y
 
-    max_dict = (lambda x, y: x
-                if sum(x.values()) > sum(y.values())
-                else y)(dict1, dict2)
+    def get_max_dict(dict_x, dict_y):
+        return dict_x if sum(dict_x.values()) > sum(dict_y.values()) else dict_y
+
+    min_dict = get_min_dict(dict1, dict2)
+    max_dict = get_max_dict(dict1, dict2)
 
     key_matches = dict1.keys() & dict2.keys()
 
@@ -14,8 +15,8 @@ def connect_dict(dict1, dict2):
 
     max_dict.update(min_dict)
 
-    max_dict = dict(filter(lambda item: item[1] >= 10, max_dict.items()))
-    sorted_dict = dict(sorted(max_dict.items(), key=lambda x: x[1]))
+    max_dict = filter(lambda item: item[1] >= 10, max_dict.items())
+    sorted_dict = dict(sorted(max_dict, key=lambda x: x[1]))
 
     return sorted_dict
 
